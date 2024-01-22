@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: telas[_indexAtual],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.grey.shade200,
         currentIndex: _indexAtual,
         items: [
           BottomNavigationBarItem(
