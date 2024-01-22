@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _indexAtual = 0;
-  List<Widget> telas = [TelaHome(), TelaDados(), TelaAjuda()];
+  List<Widget> telas = const [TelaHome(), TelaDados(), TelaAjuda()];
 
   @override
   Widget build(BuildContext context) {
