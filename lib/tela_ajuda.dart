@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class TelaAjuda extends StatefulWidget {
@@ -10,6 +12,12 @@ class TelaAjuda extends StatefulWidget {
 class _TelaAjudaState extends State<TelaAjuda> {
   @override
   Widget build(BuildContext context) {
+    final List<String>titulos = [
+      "Onde acesso os dados originais?",
+      "Qual o limite máximo para o período escolhido?",
+      "Quais dados posso obter através da ferramenta?",
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ajuda"),
@@ -17,7 +25,68 @@ class _TelaAjudaState extends State<TelaAjuda> {
         foregroundColor: Colors.white,
         backgroundColor: Colors.green.shade900,
       ),
-      body: Text("Adicione os widgets da tela nesse arquivo .dart")
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 2 * MediaQuery.of(context).size.height / 3,
+              child: ListView.builder(
+                padding: const EdgeInsets.only(left: 60, right: 60),
+                itemCount: titulos.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0, top: 16),
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 40, bottom: 40, left: 16, right: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.yellow.shade100,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Text(
+                          titulos[index],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                          )
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Column(
+              children: [
+                const Center(
+                  child: Text(
+                    "Ainda não respondemos suas dúvidas?\nEntre em contato conosco:",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "linard999@academico.ufs.br\nnatopsx@academico.ufs.br",
+                    style: TextStyle(
+                      color: Colors.green[400],
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
