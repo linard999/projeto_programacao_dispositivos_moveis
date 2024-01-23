@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+class Dado {
+  String titulo;
+  String codigo;
+  Dado({required this.titulo, required this.codigo});
+}
 class TelaDados extends StatefulWidget {
   const TelaDados({super.key});
 
@@ -12,6 +17,11 @@ class _TelaDadosState extends State<TelaDados> {
   String deAno = '';
   String ateMes = '';
   String ateAno = '';
+  List<Dado> dados = [
+    Dado(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
+    Dado(titulo: "Justiça Estadual", codigo: "22-724-1021"),
+    Dado(titulo: "Encargos Especiais", codigo: "02-725-2679"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -244,30 +254,22 @@ class _TelaDadosState extends State<TelaDados> {
                                 TextStyle(color: Colors.white, fontSize: 20)),
                       ))),
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 20),
                 Expanded(
                     child: ListView(
-                  children: [
-                    ListTile(
-                        title: const Text(
-                            "Gestão, Manutenção e Serviços ao Estado"),
-                        subtitle: const Text("01-726-2031"),
+                  children: 
+                      List<Widget>.from(dados.map((Dado dado) => ListTile(
+                        title: Text(
+                            dado.titulo,
+                            textAlign: TextAlign.center,
+                          ),
+                        subtitle: Text(
+                          dado.codigo,
+                          textAlign: TextAlign.center,
+                        ),
                         tileColor: Colors.amber.shade100,
                         trailing: const Icon(Icons.arrow_right_outlined),
-                        onTap: () {}),
-                    ListTile(
-                        title: const Text("Justiça Estadual"),
-                        subtitle: const Text("22-724-1021"),
-                        tileColor: Colors.amber.shade100,
-                        trailing: const Icon(Icons.arrow_right_outlined),
-                        onTap: () {}),
-                    ListTile(
-                        title: const Text("Encargos Especiais"),
-                        subtitle: const Text("02-725-2679"),
-                        tileColor: Colors.amber.shade100,
-                        trailing: const Icon(Icons.arrow_right_outlined),
-                        onTap: () {}),
-                  ],
+                        onTap: () {}))),
                 ))
               ],
             )));

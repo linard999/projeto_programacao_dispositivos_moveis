@@ -38,24 +38,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: telas[_indexAtual],
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        iconSize: 48,
         backgroundColor: Colors.grey.shade200,
         currentIndex: _indexAtual,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.yellow.shade600),
+            icon: CustomRoundedIcon(icon: Icons.home, color: Colors.yellow.shade600),
             label: "Home",
-            activeIcon: Icon(Icons.home, color: Colors.red.shade700),
+            activeIcon: CustomRoundedIcon(icon: Icons.home, color: Colors.red.shade700),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list, color: Colors.yellow.shade600),
+            icon: CustomRoundedIcon(icon: Icons.list, color: Colors.yellow.shade600),
             label: "Dados",
-            activeIcon: Icon(Icons.list, color: Colors.red.shade700),
+            activeIcon: CustomRoundedIcon(icon: Icons.list, color: Colors.red.shade700),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.question_mark, color: Colors.yellow.shade600),
+            icon: CustomRoundedIcon(icon: Icons.help, color: Colors.yellow.shade600),
             label: "Ajuda",
-            activeIcon: Icon(Icons.question_mark, color: Colors.red.shade700),
-          )
+            activeIcon: CustomRoundedIcon(icon: Icons.help, color: Colors.red.shade700),
+          ),
         ],
         onTap: (index) {
           setState(() {
@@ -63,6 +66,31 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
       ),
+    );
+  }
+}
+
+class CustomRoundedIcon extends StatelessWidget {
+  final IconData? icon;
+  final Color? color;
+
+  const CustomRoundedIcon({
+    super.key,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: color,
+      ),
+      child: Icon(
+        icon,
+        color: Colors.white,
+      )
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class TelaAjuda extends StatefulWidget {
@@ -25,41 +23,41 @@ class _TelaAjudaState extends State<TelaAjuda> {
         foregroundColor: Colors.white,
         backgroundColor: Colors.green.shade900,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 2 * MediaQuery.of(context).size.height / 3,
-              child: ListView.builder(
-                padding: const EdgeInsets.only(left: 60, right: 60),
-                itemCount: titulos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0, top: 16),
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 40, bottom: 40, left: 16, right: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.yellow.shade100,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Center(
-                        child: Text(
-                          titulos[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                          )
-                        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 3 * MediaQuery.of(context).size.height / 5,
+            child: ListView.builder(
+              padding: const EdgeInsets.only(left: 60, right: 60),
+              itemCount: titulos.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 40, bottom: 40, left: 16, right: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.yellow.shade100,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Text(
+                        titulos[index],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        )
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-            Column(
+          ),
+          SizedBox(
+            height:  MediaQuery.of(context).size.height / 5,
+            child: Column(
               children: [
                 const Center(
                   child: Text(
@@ -84,8 +82,8 @@ class _TelaAjudaState extends State<TelaAjuda> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
