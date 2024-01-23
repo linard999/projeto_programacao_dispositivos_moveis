@@ -27,20 +27,21 @@ class _TelaHomeState extends State<TelaHome> {
         body: Padding(
           padding: EdgeInsets.only(left: 15 * contextSize.width / 100, right: 15 * contextSize.width / 100),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(
-                height: 20 * contextSize.height / 100,
-                child: IconButton(
-                  autofocus: false,
-                  icon: Icon(
-                    Icons.palette,
-                    color: Colors.green.shade900,
-                    size: 7 * contextSize.height / 100,
-                  ),
-                  onPressed: () {
-                  },
+              IconButton(
+                autofocus: false,
+                icon: Icon(
+                  Icons.palette,
+                  color: Colors.green.shade900,
+                  size: 7 * contextSize.height / 100,
                 ),
+                onPressed: () {
+                },
+              ),
+              SizedBox(
+                height: 3 * contextSize.height / 100,
               ),
               SizedBox(
                 height: 60 * contextSize.height / 100,
@@ -48,7 +49,7 @@ class _TelaHomeState extends State<TelaHome> {
                     itemCount: mensagens.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 17),
                           child: Container(
                               height: 16 * contextSize.height / 100,
                               decoration: BoxDecoration(
@@ -59,7 +60,7 @@ class _TelaHomeState extends State<TelaHome> {
                                 padding: const EdgeInsets.all(20.0),
                                 child: Text(mensagens[index],
                                     style:
-                                        const TextStyle(color: Colors.white, fontSize: 15),
+                                        TextStyle(color: Colors.white, fontSize: 1.7 * contextSize.height / 100),
                                     textAlign: TextAlign.center),
                               ))));
                     }),
