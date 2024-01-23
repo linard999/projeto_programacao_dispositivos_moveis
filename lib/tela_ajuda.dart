@@ -15,9 +15,15 @@ class _TelaAjudaState extends State<TelaAjuda> {
       "Onde acesso os dados originais?",
       "Qual o limite máximo para o período escolhido?",
       "Quais dados posso obter através da ferramenta?",
-      //"Duvida",
-      //"Duvida",
-      //"Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
+      "Duvida",
     ];
     const int lvsPercent = 55;
 
@@ -40,9 +46,9 @@ class _TelaAjudaState extends State<TelaAjuda> {
                   itemCount: titulos.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 15),
                       child: Container(
-                        height: 50 * contextSize.height / (100 * titulos.length),
+                        height: (lvsPercent / 3.2) * contextSize.height / 100,
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         decoration: BoxDecoration(
                           color: Colors.amber.shade100,
@@ -65,35 +71,32 @@ class _TelaAjudaState extends State<TelaAjuda> {
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 5,
             ),
-            SizedBox(
-              height: 10 * contextSize.height / 100,
-              child: Column(
-                children: [
-                  const Center(
-                    child: Text(
-                      "Ainda não respondemos suas dúvidas?\nEntre em contato conosco:",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
+            Column(
+              children: [
+                const Center(
+                  child: Text(
+                    "Ainda não respondemos suas dúvidas?\nEntre em contato conosco:",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                  Center(
-                    child: Text(
-                      "linard999@academico.ufs.br\nnatopsx@academico.ufs.br",
-                      style: TextStyle(
-                        color: Colors.green.shade600,
-                        fontSize: 13,
-                      ),
-                      textAlign: TextAlign.center,
+                ),
+                Center(
+                  child: Text(
+                    "linard999@academico.ufs.br\nnatopsx@academico.ufs.br",
+                    style: TextStyle(
+                      color: Colors.green.shade600,
+                      fontSize: 13,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
