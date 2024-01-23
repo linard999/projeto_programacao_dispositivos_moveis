@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Dado {
+class DadosOrcamento {
   String titulo;
   String codigo;
-  Dado({required this.titulo, required this.codigo});
+  DadosOrcamento({required this.titulo, required this.codigo});
 }
 class TelaDados extends StatefulWidget {
   const TelaDados({super.key});
@@ -17,10 +17,10 @@ class _TelaDadosState extends State<TelaDados> {
   String deAno = '';
   String ateMes = '';
   String ateAno = '';
-  List<Dado> dados = [
-    Dado(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
-    Dado(titulo: "Justiça Estadual", codigo: "22-724-1021"),
-    Dado(titulo: "Encargos Especiais", codigo: "02-725-2679"),
+  List<DadosOrcamento> orcamentos = [
+    DadosOrcamento(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
+    DadosOrcamento(titulo: "Justiça Estadual", codigo: "22-724-1021"),
+    DadosOrcamento(titulo: "Encargos Especiais", codigo: "02-725-2679"),
   ];
 
   @override
@@ -258,7 +258,7 @@ class _TelaDadosState extends State<TelaDados> {
                 Expanded(
                     child: ListView(
                   children: 
-                      List<Widget>.from(dados.map((Dado dado) => ListTile(
+                      List<Widget>.from(orcamentos.map((DadosOrcamento dado) => ListTile(
                         title: Text(
                             dado.titulo,
                             textAlign: TextAlign.center,

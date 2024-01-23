@@ -45,7 +45,7 @@ class _TelaAjudaState extends State<TelaAjuda> {
                         height: 50 * contextSize.height / (100 * titulos.length),
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         decoration: BoxDecoration(
-                          color: Colors.yellow.shade100,
+                          color: Colors.amber.shade100,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Center(
@@ -86,7 +86,7 @@ class _TelaAjudaState extends State<TelaAjuda> {
                     child: Text(
                       "linard999@academico.ufs.br\nnatopsx@academico.ufs.br",
                       style: TextStyle(
-                        color: Colors.green[400],
+                        color: Colors.green.shade600,
                         fontSize: 13,
                       ),
                       textAlign: TextAlign.center,
