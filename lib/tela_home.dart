@@ -25,47 +25,58 @@ class _TelaHomeState extends State<TelaHome> {
           backgroundColor: Colors.green.shade900,
         ),
         body: Padding(
-          padding: EdgeInsets.only(left: 15 * contextSize.width / 100, right: 15 * contextSize.width / 100),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(
-                autofocus: false,
-                icon: Icon(
-                  Icons.palette,
-                  color: Colors.green.shade900,
-                  size: 7 * contextSize.height / 100,
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: contextSize.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        autofocus: false,
+                        icon: Icon(
+                          Icons.palette,
+                          color: Colors.green.shade900,
+                          size: 7 * contextSize.height / 100,
+                        ),
+                        onPressed: () {
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                },
-              ),
-              SizedBox(
-                height: 3 * contextSize.height / 100,
-              ),
-              SizedBox(
-                height: 60 * contextSize.height / 100,
-                child: ListView.builder(
-                    itemCount: mensagens.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                          padding: const EdgeInsets.only(bottom: 17),
-                          child: Container(
-                              height: 16 * contextSize.height / 100,
-                              decoration: BoxDecoration(
-                                  color: Colors.green.shade900,
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Text(mensagens[index],
-                                    style:
-                                        TextStyle(color: Colors.white, fontSize: 1.7 * contextSize.height / 100),
-                                    textAlign: TextAlign.center),
-                              ))));
-                    }),
-              ),
-            ],
+                SizedBox(
+                  height: 3 * contextSize.height / 100,
+                ),
+                SizedBox(
+                  width: 70 * contextSize.width / 100,
+                  height: 60 * contextSize.height / 100,
+                  child: ListView.builder(
+                      itemCount: mensagens.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                            padding: const EdgeInsets.only(bottom: 17),
+                            child: Container(
+                                height: 16 * contextSize.height / 100,
+                                decoration: BoxDecoration(
+                                    color: Colors.green.shade900,
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Center(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Text(mensagens[index],
+                                      style:
+                                          TextStyle(color: Colors.white, fontSize: 1.7 * contextSize.height / 100),
+                                      textAlign: TextAlign.center),
+                                ))));
+                      }),
+                ),
+              ],
+            ),
           ),
         ));
   }

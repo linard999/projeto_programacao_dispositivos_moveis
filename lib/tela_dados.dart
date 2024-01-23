@@ -21,10 +21,18 @@ class _TelaDadosState extends State<TelaDados> {
     DadosOrcamento(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
     DadosOrcamento(titulo: "Justiça Estadual", codigo: "22-724-1021"),
     DadosOrcamento(titulo: "Encargos Especiais", codigo: "02-725-2679"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
+    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final contextSize = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: const Text("Dados"),
@@ -33,17 +41,18 @@ class _TelaDadosState extends State<TelaDados> {
           backgroundColor: Colors.green.shade900,
         ),
         body: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 10 * contextSize.width / 100, right: 10 * contextSize.width / 100),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Center(
                   child: Text("Informe o período de pesquisa desejado",
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 8.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("De",
                         style: TextStyle(
@@ -54,16 +63,17 @@ class _TelaDadosState extends State<TelaDados> {
                         decoration: BoxDecoration(
                             color: Colors.amber.shade100,
                             borderRadius: BorderRadius.circular(30.0)),
+                            width: 33 * contextSize.width /100,
                         child: Center(
                             child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(5),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(deMes,
                                   style: const TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               PopupMenuButton(
                                 onSelected: (value) {
@@ -105,16 +115,17 @@ class _TelaDadosState extends State<TelaDados> {
                         decoration: BoxDecoration(
                             color: Colors.amber.shade100,
                             borderRadius: BorderRadius.circular(30.0)),
+                            width: 33 * contextSize.width /100,
                         child: Center(
                             child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(5),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(deAno,
                                   style: const TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               PopupMenuButton(
                                 onSelected: (value) {
@@ -142,7 +153,7 @@ class _TelaDadosState extends State<TelaDados> {
                 ),
                 const SizedBox(height: 16.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Até",
                         style: TextStyle(
@@ -153,16 +164,17 @@ class _TelaDadosState extends State<TelaDados> {
                         decoration: BoxDecoration(
                             color: Colors.amber.shade100,
                             borderRadius: BorderRadius.circular(30.0)),
+                            width: 33 * contextSize.width /100,
                         child: Center(
                             child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(5),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(ateMes,
                                   style: const TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               PopupMenuButton(
                                 onSelected: (value) {
@@ -201,19 +213,20 @@ class _TelaDadosState extends State<TelaDados> {
                           ),
                         ))),
                     Container(
+                        width: 33 * contextSize.width /100,
                         decoration: BoxDecoration(
                             color: Colors.amber.shade100,
                             borderRadius: BorderRadius.circular(30.0)),
                         child: Center(
                             child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(5),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(ateAno,
                                   style: const TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               PopupMenuButton(
                                 onSelected: (value) {
@@ -239,7 +252,7 @@ class _TelaDadosState extends State<TelaDados> {
                         ))),
                   ],
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 12),
                 GestureDetector(
                   onTap: () {},
                   child: Container(
@@ -248,14 +261,41 @@ class _TelaDadosState extends State<TelaDados> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: const Center(
                           child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Text("Confirmar",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 20)),
                       ))),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 12),
                 Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.amber.shade100,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Scrollbar(
+                      child: ListView.builder(
+                        itemCount: orcamentos.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ListTile(
+                            title: Text(
+                              orcamentos[index].titulo,
+                              textAlign: TextAlign.center,
+                            ),
+                            subtitle: Text(
+                              orcamentos[index].codigo,
+                              textAlign: TextAlign.center,
+                            ),
+                            trailing: const Icon(Icons.arrow_right_outlined),
+                            onTap: () {},
+                          );
+                        }
+                      ),
+                    ),
+                  ),
+                )
+                /*Expanded(
                     child: ListView(
                   children: 
                       List<Widget>.from(orcamentos.map((DadosOrcamento dado) => ListTile(
@@ -270,7 +310,7 @@ class _TelaDadosState extends State<TelaDados> {
                         tileColor: Colors.amber.shade100,
                         trailing: const Icon(Icons.arrow_right_outlined),
                         onTap: () {}))),
-                ))
+                ))*/
               ],
             )));
   }
