@@ -55,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
             activeIcon: CustomRoundedIcon(icon: Icons.list, color: Colors.red.shade700),
           ),
           BottomNavigationBarItem(
-            icon: CustomRoundedIcon(icon: Icons.help, color: Colors.yellow.shade600),
+            icon: CustomRoundedIcon(icon: Icons.help_outline, color: Colors.yellow.shade600),
             label: "Ajuda",
-            activeIcon: CustomRoundedIcon(icon: Icons.help, color: Colors.red.shade700),
+            activeIcon: CustomRoundedIcon(icon: Icons.help_outline, color: Colors.red.shade700),
           ),
         ],
         onTap: (index) {
