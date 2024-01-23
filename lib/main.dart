@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_programacao_dispositivos_moveis/tela_ajuda.dart';
-import 'package:projeto_programacao_dispositivos_moveis/tela_dados.dart';
-import 'package:projeto_programacao_dispositivos_moveis/tela_home.dart';
+import 'package:projeto_programacao_dispositivos_moveis/telas/tela_ajuda.dart';
+import 'package:projeto_programacao_dispositivos_moveis/telas/tela_dados.dart';
+import 'package:projeto_programacao_dispositivos_moveis/telas/tela_home.dart';
 
 void main() {
   runApp(const MyApp());
