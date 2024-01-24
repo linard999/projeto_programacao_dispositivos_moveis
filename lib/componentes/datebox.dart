@@ -9,7 +9,6 @@ class MonthDateBox extends StatefulWidget{
 
 class _MonthDateBoxState extends State<MonthDateBox> {
   String deMes = '';
-  String deAno = '';
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,6 @@ class YearDateBox extends StatefulWidget{
 }
 
 class _YearDateBoxState extends State<YearDateBox> {
-  String deMes = '';
   String deAno = '';
 
   @override

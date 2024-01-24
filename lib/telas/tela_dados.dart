@@ -10,10 +10,6 @@ class TelaDados extends StatefulWidget {
 }
 
 class _TelaDadosState extends State<TelaDados> {
-  String deMes = '';
-  String deAno = '';
-  String ateMes = '';
-  String ateAno = '';
   List<DadosOrcamento> orcamentos = [
     DadosOrcamento(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
     DadosOrcamento(titulo: "Justiça Estadual", codigo: "22-724-1021"),
