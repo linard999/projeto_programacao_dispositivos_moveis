@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
-class DadosOrcamento {
-  String titulo;
-  String codigo;
-  DadosOrcamento({required this.titulo, required this.codigo});
-}
+import 'package:projeto_programacao_dispositivos_moveis/api/orcamento.dart';
+import 'package:projeto_programacao_dispositivos_moveis/componentes/datebox.dart';
+import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
 class TelaDados extends StatefulWidget {
   const TelaDados({super.key});
 
@@ -41,14 +38,25 @@ class _TelaDadosState extends State<TelaDados> {
           backgroundColor: Colors.green.shade900,
         ),
         body: Padding(
-            padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 10 * contextSize.width / 100, right: 10 * contextSize.width / 100),
+            padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 7 * contextSize.width / 100, right: 7 * contextSize.width / 100),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Center(
-                  child: Text("Informe o período de pesquisa desejado",
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Informe o período de pesquisa desejado",
+                          style:
+                              TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      IconButton(
+                        icon: const Icon(Icons.filter_alt),
+                        color: Colors.red,
+                        iconSize: 30,
+                        onPressed: (){},
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 8.0),
                 Row(
@@ -59,96 +67,8 @@ class _TelaDadosState extends State<TelaDados> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.red.shade700)),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(30.0)),
-                            width: 33 * contextSize.width /100,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(deMes,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              PopupMenuButton(
-                                onSelected: (value) {
-                                  setState(() {
-                                    deMes = value;
-                                  });
-                                },
-                                itemBuilder: (context) => [
-                                  const PopupMenuItem(
-                                      value: 'JAN', child: Text("Janeiro")),
-                                  const PopupMenuItem(
-                                      value: 'FEV', child: Text("Fevereiro")),
-                                  const PopupMenuItem(
-                                      value: 'MAR', child: Text("Março")),
-                                  const PopupMenuItem(
-                                      value: 'ABR', child: Text("Abril")),
-                                  const PopupMenuItem(
-                                      value: 'MAI', child: Text("Maio")),
-                                  const PopupMenuItem(
-                                      value: 'JUN', child: Text("Junho")),
-                                  const PopupMenuItem(
-                                      value: 'JUL', child: Text("Julho")),
-                                  const PopupMenuItem(
-                                      value: 'AGO', child: Text("Agosto")),
-                                  const PopupMenuItem(
-                                      value: 'SET', child: Text("Setembro")),
-                                  const PopupMenuItem(
-                                      value: 'OUT', child: Text("Outubro")),
-                                  const PopupMenuItem(
-                                      value: 'NOV', child: Text("Novembro")),
-                                  const PopupMenuItem(
-                                      value: 'DEZ', child: Text("Dezembro")),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(30.0)),
-                            width: 33 * contextSize.width /100,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(deAno,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              PopupMenuButton(
-                                onSelected: (value) {
-                                  setState(() {
-                                    deAno = value;
-                                  });
-                                },
-                                itemBuilder: (context) => [
-                                  const PopupMenuItem(
-                                      value: '2019', child: Text("2019")),
-                                  const PopupMenuItem(
-                                      value: '2020', child: Text("2020")),
-                                  const PopupMenuItem(
-                                      value: '2021', child: Text("2021")),
-                                  const PopupMenuItem(
-                                      value: '2022', child: Text("2022")),
-                                  const PopupMenuItem(
-                                      value: '2023', child: Text("2023")),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))),
+                    const MonthDateBox(),
+                    const YearDateBox(),
                   ],
                 ),
                 const SizedBox(height: 16.0),
@@ -160,101 +80,15 @@ class _TelaDadosState extends State<TelaDados> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.red.shade700)),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(30.0)),
-                            width: 33 * contextSize.width /100,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(ateMes,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              PopupMenuButton(
-                                onSelected: (value) {
-                                  setState(() {
-                                    ateMes = value;
-                                  });
-                                },
-                                itemBuilder: (context) => [
-                                  const PopupMenuItem(
-                                      value: 'JAN', child: Text("Janeiro")),
-                                  const PopupMenuItem(
-                                      value: 'FEV', child: Text("Fevereiro")),
-                                  const PopupMenuItem(
-                                      value: 'MAR', child: Text("Março")),
-                                  const PopupMenuItem(
-                                      value: 'ABR', child: Text("Abril")),
-                                  const PopupMenuItem(
-                                      value: 'MAI', child: Text("Maio")),
-                                  const PopupMenuItem(
-                                      value: 'JUN', child: Text("Junho")),
-                                  const PopupMenuItem(
-                                      value: 'JUL', child: Text("Julho")),
-                                  const PopupMenuItem(
-                                      value: 'AGO', child: Text("Agosto")),
-                                  const PopupMenuItem(
-                                      value: 'SET', child: Text("Setembro")),
-                                  const PopupMenuItem(
-                                      value: 'OUT', child: Text("Outubro")),
-                                  const PopupMenuItem(
-                                      value: 'NOV', child: Text("Novembro")),
-                                  const PopupMenuItem(
-                                      value: 'DEZ', child: Text("Dezembro")),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))),
-                    Container(
-                        width: 33 * contextSize.width /100,
-                        decoration: BoxDecoration(
-                            color: Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(30.0)),
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(ateAno,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              PopupMenuButton(
-                                onSelected: (value) {
-                                  setState(() {
-                                    ateAno = value;
-                                  });
-                                },
-                                itemBuilder: (context) => [
-                                  const PopupMenuItem(
-                                      value: '2019', child: Text("2019")),
-                                  const PopupMenuItem(
-                                      value: '2020', child: Text("2020")),
-                                  const PopupMenuItem(
-                                      value: '2021', child: Text("2021")),
-                                  const PopupMenuItem(
-                                      value: '2022', child: Text("2022")),
-                                  const PopupMenuItem(
-                                      value: '2023', child: Text("2023")),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))),
+                    const MonthDateBox(),
+                    const YearDateBox(),
                   ],
                 ),
                 const SizedBox(height: 12),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    
+                  },
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.green.shade900,
@@ -270,9 +104,10 @@ class _TelaDadosState extends State<TelaDados> {
                 const SizedBox(height: 12),
                 Expanded(
                   child: Container(
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.amber.shade100,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Scrollbar(
                       child: ListView.builder(
@@ -288,29 +123,18 @@ class _TelaDadosState extends State<TelaDados> {
                               textAlign: TextAlign.center,
                             ),
                             trailing: const Icon(Icons.arrow_right_outlined),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TelaOrcamento(orcamento: orcamentos[index])),
+                              );
+                            },
                           );
                         }
                       ),
                     ),
                   ),
                 )
-                /*Expanded(
-                    child: ListView(
-                  children: 
-                      List<Widget>.from(orcamentos.map((DadosOrcamento dado) => ListTile(
-                        title: Text(
-                            dado.titulo,
-                            textAlign: TextAlign.center,
-                          ),
-                        subtitle: Text(
-                          dado.codigo,
-                          textAlign: TextAlign.center,
-                        ),
-                        tileColor: Colors.amber.shade100,
-                        trailing: const Icon(Icons.arrow_right_outlined),
-                        onTap: () {}))),
-                ))*/
               ],
             )));
   }
