@@ -53,7 +53,7 @@ class _TelaHomeState extends State<TelaHome> {
                   height: 3 * contextSize.height / 100,
                 ),
                 SizedBox(
-                  width: 70 * contextSize.width / 100,
+                  width: 82 * contextSize.width / 100,
                   height: 60 * contextSize.height / 100,
                   child: ListView.builder(
                       itemCount: mensagens.length,
@@ -61,7 +61,7 @@ class _TelaHomeState extends State<TelaHome> {
                         return Padding(
                             padding: const EdgeInsets.only(bottom: 17),
                             child: Container(
-                                height: 16 * contextSize.height / 100,
+                                height: 17 * contextSize.height / 100,
                                 decoration: BoxDecoration(
                                     color: Colors.green.shade900,
                                     borderRadius: BorderRadius.circular(20.0)),

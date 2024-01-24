@@ -35,7 +35,7 @@ class _TelaAjudaState extends State<TelaAjuda> {
         backgroundColor: Colors.green.shade900,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 16, bottom: 16, left: 55, right: 55),
+        padding: const EdgeInsets.only(top: 16, bottom: 16, left: 40, right: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -71,7 +71,7 @@ class _TelaAjudaState extends State<TelaAjuda> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 16,
             ),
             Column(
               children: [
