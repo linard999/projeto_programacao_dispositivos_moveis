@@ -3,16 +3,14 @@ import 'package:projeto_programacao_dispositivos_moveis/services/http_client.dar
 import 'dart:convert';
 
 abstract class IConsultaRepository {
-  Future<List<ConsultaModel>> getRegistros(int ano, int mes);
+  Future<List<ConsultaModel>> getRegistros(String ano, String mes);
 }
 
 class ConsultaRepository implements IConsultaRepository {
   @override
-  Future<List<ConsultaModel>> getRegistros(int ano, int mes) async {
-    String anoString = ano.toString();
-    String mesString = mes.toString();
+  Future<List<ConsultaModel>> getRegistros(String ano, String mes) async {
     String url =
-        "https://k8s-prd.tjrs.jus.br/public/api/transparencia/orcamento/$anoString/$mesString";
+        "https://k8s-prd.tjrs.jus.br/public/api/transparencia/orcamento/$ano/$mes";
 
     var resposta = await HttpClient().get(url: url);
     if (resposta.statusCode == 200) {
