@@ -39,6 +39,7 @@ dependencies:
   convert: ^3.1.1
   prog_disp_moveis_tjrs:
     path: ./package/prog_disp_moveis_tjrs
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

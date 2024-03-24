@@ -31,7 +31,7 @@ class _TelaDadosState extends State<TelaDados> {
           title: const Text("Dados"),
           centerTitle: true,
           foregroundColor: Colors.white,
-          backgroundColor: Colors.green.shade900,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         body: Padding(
             padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 7 * contextSize.width / 100, right: 7 * contextSize.width / 100),
@@ -44,7 +44,7 @@ class _TelaDadosState extends State<TelaDados> {
                     children: [
                       const Text("Informe o período de pesquisa desejado",
                           style:
-                              TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                              TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
                       IconButton(
                         icon: const Icon(Icons.filter_alt),
                         color: Colors.red,

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:projeto_programacao_dispositivos_moveis/tema.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_ajuda.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_dados.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => TemaDinamico(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +18,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Projeto Flutter Programação para Dispositivos Móveis 2023.2',
-      home: MyHomePage(title: 'Projeto Flutter'),
+      home: const MyHomePage(title: 'Projeto Flutter'),
       debugShowCheckedModeBanner: false,
+      theme: Provider.of<TemaDinamico>(context).tema,
     );
   }
 }
@@ -41,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         iconSize: 48,
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         currentIndex: _indexAtual,
         items: [
           BottomNavigationBarItem(
@@ -89,7 +95,7 @@ class CustomRoundedIcon extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.background,
       )
     );
   }
