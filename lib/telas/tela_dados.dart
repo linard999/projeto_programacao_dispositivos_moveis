@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_programacao_dispositivos_moveis/api/orcamento.dart';
 import 'package:projeto_programacao_dispositivos_moveis/componentes/datebox.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
+import 'package:prog_disp_moveis_tjrs/prog_disp_moveis_tjrs.dart';
+
 class TelaDados extends StatefulWidget {
   const TelaDados({super.key});
 
@@ -10,19 +12,6 @@ class TelaDados extends StatefulWidget {
 }
 
 class _TelaDadosState extends State<TelaDados> {
-  List<DadosOrcamento> orcamentos = [
-    DadosOrcamento(titulo: "Gestão, Manutenção e Serviços ao Estado", codigo: "01-726-2031"),
-    DadosOrcamento(titulo: "Justiça Estadual", codigo: "22-724-1021"),
-    DadosOrcamento(titulo: "Encargos Especiais", codigo: "02-725-2679"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-    DadosOrcamento(titulo: "Título", codigo: "12-345-6789"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final contextSize = MediaQuery.of(context).size;
@@ -34,7 +23,11 @@ class _TelaDadosState extends State<TelaDados> {
           backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         body: Padding(
-            padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 7 * contextSize.width / 100, right: 7 * contextSize.width / 100),
+            padding: EdgeInsets.only(
+                top: 16.0,
+                bottom: 16.0,
+                left: 7 * contextSize.width / 100,
+                right: 7 * contextSize.width / 100),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -43,13 +36,15 @@ class _TelaDadosState extends State<TelaDados> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text("Informe o período de pesquisa desejado",
-                          style:
-                              TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
                       IconButton(
                         icon: const Icon(Icons.filter_alt),
                         color: Colors.red,
                         iconSize: 30,
-                        onPressed: (){},
+                        onPressed: () {},
                       ),
                     ],
                   ),
@@ -82,9 +77,7 @@ class _TelaDadosState extends State<TelaDados> {
                 ),
                 const SizedBox(height: 12),
                 GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.green.shade900,
@@ -106,29 +99,39 @@ class _TelaDadosState extends State<TelaDados> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Scrollbar(
-                      child: ListView.builder(
-                        itemCount: orcamentos.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListTile(
-                            title: Text(
-                              orcamentos[index].titulo,
-                              textAlign: TextAlign.center,
-                            ),
-                            subtitle: Text(
-                              orcamentos[index].codigo,
-                              textAlign: TextAlign.center,
-                            ),
-                            trailing: const Icon(Icons.arrow_right_outlined),
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => TelaOrcamento(orcamento: orcamentos[index])),
-                              );
-                            },
-                          );
-                        }
-                      ),
-                    ),
+                        child: FutureBuilder(
+                            future: ConsultaRepository()
+                                .getRegistros("1", "2022", "3", "2022"),
+                            builder:
+                                (BuildContext context, AsyncSnapshot snapshot) {
+                              if (snapshot.data == null) {
+                                return Container(
+                                    child: Center(
+                                        child: CircularProgressIndicator()));
+                              } else {
+                                List<String> titulos = [];
+                                List<String> subtitulos = [];
+                                for (int i = 0; i < snapshot.data.length; i++) {
+                                  for (int j = 0;
+                                      j < snapshot.data[i].orcamentos.length;
+                                      j++) {
+                                    titulos.add(snapshot.data[i].orcamentos[j]
+                                        .unidadeOrcamentariaDescricao);
+                                    subtitulos.add(snapshot
+                                        .data[i].orcamentos[j].programatica);
+                                  }
+                                }
+
+                                return ListView.builder(
+                                    itemCount: titulos.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return ListTile(
+                                          title: Text(titulos[index]),
+                                          subtitle: Text(subtitulos[index]));
+                                    });
+                              }
+                            })),
                   ),
                 )
               ],
