@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:projeto_programacao_dispositivos_moveis/tema.dart';
 class TelaHome extends StatefulWidget {
   const TelaHome({super.key});
 
@@ -22,7 +23,7 @@ class _TelaHomeState extends State<TelaHome> {
           title: const Text("Home"),
           centerTitle: true,
           foregroundColor: Colors.white,
-          backgroundColor: Colors.green.shade900,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -36,14 +37,26 @@ class _TelaHomeState extends State<TelaHome> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        autofocus: false,
+                      PopupMenuButton(
+                        itemBuilder: (context) => [
+                          const PopupMenuItem(
+                              value: "escuro", child: Text("Tema Escuro")),
+                          const PopupMenuItem(
+                              value: "claro", child: Text("Tema Claro")),
+                        ],
                         icon: Icon(
                           Icons.palette,
                           color: Colors.green.shade900,
                           size: 7 * contextSize.height / 100,
                         ),
-                        onPressed: () {
+                        onSelected: (value) {
+                          if (value == "escuro") {
+                            Provider.of<TemaDinamico>(context, listen: false)
+                                .setarTema(TipoTema.escuro);
+                          } else {
+                            Provider.of<TemaDinamico>(context, listen: false)
+                                .setarTema(TipoTema.claro);
+                          }
                         },
                       ),
                     ],

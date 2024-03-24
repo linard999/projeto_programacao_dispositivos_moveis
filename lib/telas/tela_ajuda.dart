@@ -32,7 +32,7 @@ class _TelaAjudaState extends State<TelaAjuda> {
         title: const Text("Ajuda"),
         centerTitle: true,
         foregroundColor: Colors.white,
-        backgroundColor: Colors.green.shade900,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16, bottom: 16, left: 40, right: 40),
@@ -75,11 +75,11 @@ class _TelaAjudaState extends State<TelaAjuda> {
             ),
             Column(
               children: [
-                const Center(
+                Center(
                   child: Text(
                     "Ainda não respondemos suas dúvidas?\nEntre em contato conosco:",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
                     ),
