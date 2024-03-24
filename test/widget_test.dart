@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_programacao_dispositivos_moveis/repositories/consulta_repository.dart';
+import 'package:prog_disp_moveis_tjrs/prog_disp_moveis_tjrs.dart';
 
 void main() {
   group('Teste', () {

@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.2.0
   convert: ^3.1.1
+  prog_disp_moveis_tjrs:
+    path: ./package/prog_disp_moveis_tjrs
 
 dev_dependencies:
   flutter_test:

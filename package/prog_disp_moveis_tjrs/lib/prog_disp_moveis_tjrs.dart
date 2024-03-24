@@ -1,3 +1,24 @@
+library prog_disp_moveis_tjrs;
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+//Client do HTTP
+
+abstract class IHttpClient {
+  Future get({required String url});
+}
+
+class HttpClient implements IHttpClient {
+  final client = http.Client();
+
+  @override
+  Future get({required String url}) async {
+    return await client.get(Uri.parse(url));
+  }
+}
+
+//Modelo da consulta
+
 class ConsultaModel {
   String? mes;
   String? ano;
@@ -134,5 +155,31 @@ class Orcamentos {
     data['pago'] = this.pago;
     data['pagoPorcentagem'] = this.pagoPorcentagem;
     return data;
+  }
+}
+
+//repository da consulta
+
+abstract class IConsultaRepository {
+  Future<List<ConsultaModel>> getRegistros(
+      String mesInicial, String anoInicial, String mesFinal, String anoFinal);
+}
+
+class ConsultaRepository implements IConsultaRepository {
+  @override
+  Future<List<ConsultaModel>> getRegistros(String mesInicial, String anoInicial,
+      String mesFinal, String anoFinal) async {
+    String url =
+        "https://unique-evidently-pipefish.ngrok-free.app/$mesInicial/$anoInicial/$mesFinal/$anoFinal";
+
+    var resposta = await HttpClient().get(url: url);
+    if (resposta.statusCode == 200) {
+      var lista = jsonDecode(resposta.body) as List;
+      var registros =
+          lista.map((item) => ConsultaModel.fromJson(item)).toList();
+      return registros;
+    } else {
+      throw Exception('Erro ao buscar registros');
+    }
   }
 }
