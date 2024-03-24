@@ -1,37 +1,33 @@
 class ConsultaModel {
-  Classificacao? classificacao;
-  Dotacao? dotacao;
-  Execucao? execucao;
+  String? mes;
+  String? ano;
+  List<Orcamentos>? orcamentos;
 
-  ConsultaModel({this.classificacao, this.dotacao, this.execucao});
+  ConsultaModel({this.mes, this.ano, this.orcamentos});
 
   ConsultaModel.fromJson(Map<String, dynamic> json) {
-    classificacao = json['classificacao'] != null
-        ? new Classificacao.fromJson(json['classificacao'])
-        : null;
-    dotacao =
-        json['dotacao'] != null ? new Dotacao.fromJson(json['dotacao']) : null;
-    execucao = json['execucao'] != null
-        ? new Execucao.fromJson(json['execucao'])
-        : null;
+    mes = json['mes'];
+    ano = json['ano'];
+    if (json['orcamentos'] != null) {
+      orcamentos = <Orcamentos>[];
+      json['orcamentos'].forEach((v) {
+        orcamentos!.add(new Orcamentos.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.classificacao != null) {
-      data['classificacao'] = this.classificacao!.toJson();
-    }
-    if (this.dotacao != null) {
-      data['dotacao'] = this.dotacao!.toJson();
-    }
-    if (this.execucao != null) {
-      data['execucao'] = this.execucao!.toJson();
+    data['mes'] = this.mes;
+    data['ano'] = this.ano;
+    if (this.orcamentos != null) {
+      data['orcamentos'] = this.orcamentos!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Classificacao {
+class Orcamentos {
   String? unidadeOrcamentariaCodigo;
   String? unidadeOrcamentariaDescricao;
   String? funcaoESubFuncao;
@@ -42,8 +38,22 @@ class Classificacao {
   String? fonteCodigo;
   String? fonteDescricao;
   String? gndCodigo;
+  String? inicial;
+  String? creditosAdicionaisAcrescimo;
+  String? creditosAdicionaisDescrescimos;
+  String? atualizada;
+  String? contingenciado;
+  String? movLiquidaCreditosProvisao;
+  String? movLiquidaCreditosDestaque;
+  String? liquida;
+  String? empenhado;
+  String? empenhadoPorcentagem;
+  String? liquidado;
+  String? liquidadoPorcentagem;
+  String? pago;
+  String? pagoPorcentagem;
 
-  Classificacao(
+  Orcamentos(
       {this.unidadeOrcamentariaCodigo,
       this.unidadeOrcamentariaDescricao,
       this.funcaoESubFuncao,
@@ -53,9 +63,23 @@ class Classificacao {
       this.esfera,
       this.fonteCodigo,
       this.fonteDescricao,
-      this.gndCodigo});
+      this.gndCodigo,
+      this.inicial,
+      this.creditosAdicionaisAcrescimo,
+      this.creditosAdicionaisDescrescimos,
+      this.atualizada,
+      this.contingenciado,
+      this.movLiquidaCreditosProvisao,
+      this.movLiquidaCreditosDestaque,
+      this.liquida,
+      this.empenhado,
+      this.empenhadoPorcentagem,
+      this.liquidado,
+      this.liquidadoPorcentagem,
+      this.pago,
+      this.pagoPorcentagem});
 
-  Classificacao.fromJson(Map<String, dynamic> json) {
+  Orcamentos.fromJson(Map<String, dynamic> json) {
     unidadeOrcamentariaCodigo = json['unidadeOrcamentariaCodigo'];
     unidadeOrcamentariaDescricao = json['unidadeOrcamentariaDescricao'];
     funcaoESubFuncao = json['funcaoESubFuncao'];
@@ -66,6 +90,20 @@ class Classificacao {
     fonteCodigo = json['fonteCodigo'];
     fonteDescricao = json['fonteDescricao'];
     gndCodigo = json['gndCodigo'];
+    inicial = json['inicial'];
+    creditosAdicionaisAcrescimo = json['creditosAdicionaisAcrescimo'];
+    creditosAdicionaisDescrescimos = json['creditosAdicionaisDescrescimos'];
+    atualizada = json['atualizada'];
+    contingenciado = json['contingenciado'];
+    movLiquidaCreditosProvisao = json['movLiquidaCreditosProvisao'];
+    movLiquidaCreditosDestaque = json['movLiquidaCreditosDestaque'];
+    liquida = json['liquida'];
+    empenhado = json['empenhado'];
+    empenhadoPorcentagem = json['empenhadoPorcentagem'];
+    liquidado = json['liquidado'];
+    liquidadoPorcentagem = json['liquidadoPorcentagem'];
+    pago = json['pago'];
+    pagoPorcentagem = json['pagoPorcentagem'];
   }
 
   Map<String, dynamic> toJson() {
@@ -80,43 +118,6 @@ class Classificacao {
     data['fonteCodigo'] = this.fonteCodigo;
     data['fonteDescricao'] = this.fonteDescricao;
     data['gndCodigo'] = this.gndCodigo;
-    return data;
-  }
-}
-
-class Dotacao {
-  String? inicial;
-  String? creditosAdicionaisAcrescimo;
-  String? creditosAdicionaisDescrescimos;
-  String? atualizada;
-  String? contingenciado;
-  String? movLiquidaCreditosProvisao;
-  String? movLiquidaCreditosDestaque;
-  String? liquida;
-
-  Dotacao(
-      {this.inicial,
-      this.creditosAdicionaisAcrescimo,
-      this.creditosAdicionaisDescrescimos,
-      this.atualizada,
-      this.contingenciado,
-      this.movLiquidaCreditosProvisao,
-      this.movLiquidaCreditosDestaque,
-      this.liquida});
-
-  Dotacao.fromJson(Map<String, dynamic> json) {
-    inicial = json['inicial'];
-    creditosAdicionaisAcrescimo = json['creditosAdicionaisAcrescimo'];
-    creditosAdicionaisDescrescimos = json['creditosAdicionaisDescrescimos'];
-    atualizada = json['atualizada'];
-    contingenciado = json['contingenciado'];
-    movLiquidaCreditosProvisao = json['movLiquidaCreditosProvisao'];
-    movLiquidaCreditosDestaque = json['movLiquidaCreditosDestaque'];
-    liquida = json['liquida'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['inicial'] = this.inicial;
     data['creditosAdicionaisAcrescimo'] = this.creditosAdicionaisAcrescimo;
     data['creditosAdicionaisDescrescimos'] =
@@ -126,37 +127,6 @@ class Dotacao {
     data['movLiquidaCreditosProvisao'] = this.movLiquidaCreditosProvisao;
     data['movLiquidaCreditosDestaque'] = this.movLiquidaCreditosDestaque;
     data['liquida'] = this.liquida;
-    return data;
-  }
-}
-
-class Execucao {
-  String? empenhado;
-  String? empenhadoPorcentagem;
-  String? liquidado;
-  String? liquidadoPorcentagem;
-  String? pago;
-  String? pagoPorcentagem;
-
-  Execucao(
-      {this.empenhado,
-      this.empenhadoPorcentagem,
-      this.liquidado,
-      this.liquidadoPorcentagem,
-      this.pago,
-      this.pagoPorcentagem});
-
-  Execucao.fromJson(Map<String, dynamic> json) {
-    empenhado = json['empenhado'];
-    empenhadoPorcentagem = json['empenhadoPorcentagem'];
-    liquidado = json['liquidado'];
-    liquidadoPorcentagem = json['liquidadoPorcentagem'];
-    pago = json['pago'];
-    pagoPorcentagem = json['pagoPorcentagem'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['empenhado'] = this.empenhado;
     data['empenhadoPorcentagem'] = this.empenhadoPorcentagem;
     data['liquidado'] = this.liquidado;

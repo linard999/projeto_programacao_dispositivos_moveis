@@ -5,7 +5,7 @@ void main() {
   group('Teste', () {
     test('Teste de Repository', () async {
       final repository = ConsultaRepository();
-      final registros = await repository.getRegistros("2023", "05");
+      final registros = await repository.getRegistros("1", "2022", "3", "2022");
       expect(registros, isNull);
     });
   });

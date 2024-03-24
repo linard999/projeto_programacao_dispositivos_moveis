@@ -3,14 +3,16 @@ import 'package:projeto_programacao_dispositivos_moveis/services/http_client.dar
 import 'dart:convert';
 
 abstract class IConsultaRepository {
-  Future<List<ConsultaModel>> getRegistros(String ano, String mes);
+  Future<List<ConsultaModel>> getRegistros(
+      String mesInicial, String anoInicial, String mesFinal, String anoFinal);
 }
 
 class ConsultaRepository implements IConsultaRepository {
   @override
-  Future<List<ConsultaModel>> getRegistros(String ano, String mes) async {
+  Future<List<ConsultaModel>> getRegistros(String mesInicial, String anoInicial,
+      String mesFinal, String anoFinal) async {
     String url =
-        "https://k8s-prd.tjrs.jus.br/public/api/transparencia/orcamento/$ano/$mes";
+        "https://unique-evidently-pipefish.ngrok-free.app/$mesInicial/$anoInicial/$mesFinal/$anoFinal";
 
     var resposta = await HttpClient().get(url: url);
     if (resposta.statusCode == 200) {

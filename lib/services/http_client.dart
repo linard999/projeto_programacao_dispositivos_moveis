@@ -1,5 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'dart:io';
 
 abstract class IHttpClient {
   Future get({required String url});
