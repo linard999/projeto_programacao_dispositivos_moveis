@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
 import 'package:projeto_programacao_dispositivos_moveis/api/orcamento.dart';
 import 'package:projeto_programacao_dispositivos_moveis/componentes/datebox.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
@@ -154,8 +155,7 @@ class _TelaDadosState extends State<TelaDados> {
                                 _anoFinal.text.toString()),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
-                              if (snapshot.data == null ||
-                                  snapshot.data.length > 3) {
+                              if (snapshot.data == null) {
                                 return const Center(
                                     child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -172,6 +172,7 @@ class _TelaDadosState extends State<TelaDados> {
                               } else {
                                 List<String> titulos = [];
                                 List<String> subtitulos = [];
+                                List<Orcamentos> orcamentos = [];
                                 for (int i = 0; i < snapshot.data.length; i++) {
                                   for (int j = 0;
                                       j < snapshot.data[i].orcamentos.length;
@@ -180,6 +181,7 @@ class _TelaDadosState extends State<TelaDados> {
                                         .unidadeOrcamentariaDescricao);
                                     subtitulos.add(snapshot
                                         .data[i].orcamentos[j].programatica);
+                                    orcamentos.add(snapshot.data[i].orcamentos[j]);
                                   }
                                 }
 
@@ -189,7 +191,12 @@ class _TelaDadosState extends State<TelaDados> {
                                         (BuildContext context, int index) {
                                       return ListTile(
                                           title: Text(titulos[index]),
-                                          subtitle: Text(subtitulos[index]));
+                                          subtitle: Text(subtitulos[index]),
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (context) => TelaOrcamento(orcamentos: orcamentos[index]))
+                                            );
+                                          },);
                                     });
                               }
                             })),

@@ -177,7 +177,11 @@ class ConsultaRepository implements IConsultaRepository {
       var lista = jsonDecode(resposta.body) as List;
       var registros =
           lista.map((item) => ConsultaModel.fromJson(item)).toList();
-      return registros;
+      if (registros.length < 4) {
+        return registros;
+      } else {
+        throw Exception('Consulta muito extensa');
+      }
     } else {
       throw Exception('Erro ao buscar registros');
     }
