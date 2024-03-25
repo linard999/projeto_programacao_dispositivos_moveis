@@ -35,8 +35,8 @@ var temaClaro = ThemeData(
 enum TipoTema { escuro, claro }
 
 class TemaDinamico extends ChangeNotifier {
-  ThemeData tema = temaEscuro;
-  TipoTema _temaAtual = TipoTema.escuro;
+  ThemeData tema = temaClaro;
+  TipoTema _temaAtual = TipoTema.claro;
   
   void setarTema(TipoTema tipoTema) {
     tema = tipoTema == TipoTema.escuro ? temaEscuro : temaClaro;
