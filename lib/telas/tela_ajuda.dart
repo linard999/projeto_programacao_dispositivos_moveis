@@ -11,19 +11,10 @@ class _TelaAjudaState extends State<TelaAjuda> {
   @override
   Widget build(BuildContext context) {
     final contextSize = MediaQuery.of(context).size;
-    final List<String>titulos = [
-      "Onde acesso os dados originais?",
-      "Qual o limite máximo para o período escolhido?",
-      "Quais dados posso obter através da ferramenta?",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
-      "Duvida",
+    final List<String> titulos = [
+      "Onde acesso os dados originais?\nOs dados originais podem ser acessados no site oficial do TJRS, no link https://k8s-prd.tjrs.jus.br/public/api/transparencia/swagger-ui/index.html",
+      "Qual o limite máximo para o período escolhido?\nSó é possível retornar consultas com intervalos de 3 meses (incluindo os extremos), caso contrário não serão retornados resultados.",
+      "Quais dados posso obter através da ferramenta?\nOs dados obtidos com a ferramenta são dados judiciais, referentes a lista de orçamentos do TJRS.",
     ];
     const int lvsPercent = 55;
 
