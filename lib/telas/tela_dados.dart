@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
-import 'package:projeto_programacao_dispositivos_moveis/api/orcamento.dart';
-import 'package:projeto_programacao_dispositivos_moveis/componentes/datebox.dart';
-import 'package:projeto_programacao_dispositivos_moveis/telas/tela_orcamento.dart';
 import 'package:prog_disp_moveis_tjrs/prog_disp_moveis_tjrs.dart';
 
 class TelaDados extends StatefulWidget {

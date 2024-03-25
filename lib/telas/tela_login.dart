@@ -21,7 +21,6 @@ class _TelaLoginState extends State<TelaLogin> {
     
     CustomTextField emailField = CustomTextField(labelText: 'e-mail', isObscure: false);
     CustomTextField passwordField = CustomTextField(labelText: 'senha', isObscure: true);
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
