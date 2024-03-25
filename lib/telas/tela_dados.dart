@@ -12,6 +12,11 @@ class TelaDados extends StatefulWidget {
 }
 
 class _TelaDadosState extends State<TelaDados> {
+  TextEditingController _mesInicial = TextEditingController();
+  TextEditingController _anoInicial = TextEditingController();
+  TextEditingController _mesFinal = TextEditingController();
+  TextEditingController _anoFinal = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final contextSize = MediaQuery.of(context).size;
@@ -51,33 +56,75 @@ class _TelaDadosState extends State<TelaDados> {
                 ),
                 const SizedBox(height: 8.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("De",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.red.shade700)),
-                    const MonthDateBox(),
-                    const YearDateBox(),
+                    SizedBox(
+                      width: 100,
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Mês',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _mesInicial,
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100,
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Ano',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _anoInicial,
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("Até",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.red.shade700)),
-                    const MonthDateBox(),
-                    const YearDateBox(),
+                    SizedBox(
+                      width: 100,
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Mês',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _mesFinal,
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100,
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Ano',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _anoFinal,
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 12),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {});
+                  },
                   child: Container(
                       decoration: BoxDecoration(
                           color: Colors.green.shade900,
@@ -100,14 +147,28 @@ class _TelaDadosState extends State<TelaDados> {
                     ),
                     child: Scrollbar(
                         child: FutureBuilder(
-                            future: ConsultaRepository()
-                                .getRegistros("1", "2022", "3", "2022"),
+                            future: ConsultaRepository().getRegistros(
+                                _mesInicial.text.toString(),
+                                _anoInicial.text.toString(),
+                                _mesFinal.text.toString(),
+                                _anoFinal.text.toString()),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
-                              if (snapshot.data == null) {
-                                return Container(
-                                    child: Center(
-                                        child: CircularProgressIndicator()));
+                              if (snapshot.data == null ||
+                                  snapshot.data.length > 3) {
+                                return const Center(
+                                    child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    Center(child: Text("Carregando...")),
+                                    Center(child: Text("Não faça consultas com mais de 3 meses")),
+                                    Center(child: Text("no aplicativo ou ele não irá funcionar"))
+                                  ],
+                                ));
                               } else {
                                 List<String> titulos = [];
                                 List<String> subtitulos = [];
