@@ -24,6 +24,12 @@ class _TelaHomeState extends State<TelaHome> {
           centerTitle: true,
           foregroundColor: Colors.white,
           backgroundColor: Theme.of(context).colorScheme.secondary,
+          leading: IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+            ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -39,10 +45,10 @@ class _TelaHomeState extends State<TelaHome> {
                     children: [
                       PopupMenuButton(
                         itemBuilder: (context) => [
-                          const PopupMenuItem(
-                              value: "escuro", child: Text("Tema Escuro")),
-                          const PopupMenuItem(
-                              value: "claro", child: Text("Tema Claro")),
+                          PopupMenuItem(
+                              value: "escuro", child: Text("Tema Escuro", style: TextStyle(color: Theme.of(context).colorScheme.primary),)),
+                          PopupMenuItem(
+                              value: "claro", child: Text("Tema Claro", style: TextStyle(color: Theme.of(context).colorScheme.primary),)),
                         ],
                         icon: Icon(
                           Icons.palette,

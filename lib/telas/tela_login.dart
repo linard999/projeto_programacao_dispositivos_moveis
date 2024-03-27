@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:projeto_programacao_dispositivos_moveis/api/signin_service.dart';
-import 'package:projeto_programacao_dispositivos_moveis/telas/tela_cadastro.dart';
-import 'package:projeto_programacao_dispositivos_moveis/telas/myhomepage.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({super.key});
@@ -24,7 +22,7 @@ class _TelaLoginState extends State<TelaLogin> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        title: const Text('Login'),
+        title: Text('Login', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
       ),
       body: Center(
         child: Padding(
@@ -60,6 +58,7 @@ class _TelaLoginState extends State<TelaLogin> {
                   onPressed: () async{
                     String resposta = await SignIn.signIn(emailField.controller.text, passwordField.controller.text);
                     dynamic res = jsonDecode(resposta);
+                    print(res);
                     if(res['error'] != null){
                       String message = res['error']['message'];
                       if(message == 'TOO_MANY_ATTEMPTS_TRY_LATER'){
@@ -67,12 +66,8 @@ class _TelaLoginState extends State<TelaLogin> {
                       } else{
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('E-mail ou senha incorretos!')));
                       }
-                      passwordField.controller.clear();
                     } else {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const MyHomePage(title: 'Projeto Flutter'),
-                      ));
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                   child: const Text('Login'),
@@ -82,10 +77,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const TelaCadastro(),
-                    ));
+                    Navigator.pushNamed(context, '/cadastro');
                   },
                   child: const Text('Cadastrar'),
                 ),
@@ -125,13 +117,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: widget.labelText,
         suffixIcon: widget.isObscure ? IconButton(
           icon: Icon(_visibility ? Icons.visibility : Icons.visibility_off),
           onPressed: _toggleVisibility,
         ) : null,
       ),
+      onTapOutside: null,
+      onChanged: null,
+      onEditingComplete: null,
       obscureText: widget.isObscure && !_visibility,
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       controller: widget.controller,
     );
   }

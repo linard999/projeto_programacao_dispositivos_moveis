@@ -10,10 +10,10 @@ class TelaDados extends StatefulWidget {
 }
 
 class _TelaDadosState extends State<TelaDados> {
-  TextEditingController _mesInicial = TextEditingController();
-  TextEditingController _anoInicial = TextEditingController();
-  TextEditingController _mesFinal = TextEditingController();
-  TextEditingController _anoFinal = TextEditingController();
+  final TextEditingController _mesInicial = TextEditingController();
+  final TextEditingController _anoInicial = TextEditingController();
+  final TextEditingController _mesFinal = TextEditingController();
+  final TextEditingController _anoFinal = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,11 @@ class _TelaDadosState extends State<TelaDados> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Informe o período de pesquisa desejado",
+                      Text("Informe o período de pesquisa desejado",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white)),
+                              color: Theme.of(context).colorScheme.primary)),
                       IconButton(
                         icon: const Icon(Icons.filter_alt),
                         color: Colors.red,
@@ -64,10 +64,12 @@ class _TelaDadosState extends State<TelaDados> {
                     SizedBox(
                       width: 100,
                       child: TextField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
                           labelText: 'Mês',
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                         ),
+                        //style: TextStyle(color: Theme.of(context).colorScheme.primary),
                         controller: _mesInicial,
                         keyboardType: TextInputType.number,
                       ),
@@ -75,9 +77,10 @@ class _TelaDadosState extends State<TelaDados> {
                     SizedBox(
                       width: 100,
                       child: TextField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Ano',
-                          border: OutlineInputBorder(),
+                          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          border: const OutlineInputBorder(),
                         ),
                         controller: _anoInicial,
                         keyboardType: TextInputType.number,
@@ -97,9 +100,10 @@ class _TelaDadosState extends State<TelaDados> {
                     SizedBox(
                       width: 100,
                       child: TextField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Mês',
-                          border: OutlineInputBorder(),
+                          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          border: const OutlineInputBorder(),
                         ),
                         controller: _mesFinal,
                         keyboardType: TextInputType.number,
@@ -108,9 +112,10 @@ class _TelaDadosState extends State<TelaDados> {
                     SizedBox(
                       width: 100,
                       child: TextField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Ano',
-                          border: OutlineInputBorder(),
+                          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          border: const OutlineInputBorder(),
                         ),
                         controller: _anoFinal,
                         keyboardType: TextInputType.number,
@@ -158,7 +163,7 @@ class _TelaDadosState extends State<TelaDados> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(2.0),
                                       child: CircularProgressIndicator(),
                                     ),
                                     Center(child: Text("Carregando...")),
@@ -187,8 +192,8 @@ class _TelaDadosState extends State<TelaDados> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return ListTile(
-                                          title: Text(titulos[index]),
-                                          subtitle: Text(subtitulos[index]),
+                                          title: Text(titulos[index], textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                          subtitle: Text(subtitulos[index], textAlign: TextAlign.center),
                                           onTap: () {
                                             Navigator.of(context).push(
                                               MaterialPageRoute(builder: (context) => TelaOrcamento(orcamentos: orcamentos[index]))
