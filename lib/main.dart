@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:projeto_programacao_dispositivos_moveis/tema.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_ajuda.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_dados.dart';
-import 'package:projeto_programacao_dispositivos_moveis/telas/tela_home.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_login.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/tela_cadastro.dart';
 import 'package:projeto_programacao_dispositivos_moveis/telas/myhomepage.dart';
@@ -25,7 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Projeto Flutter Programação para Dispositivos Móveis 2023.2',
       debugShowCheckedModeBanner: false,
       theme: Provider.of<TemaDinamico>(context).tema,
-      home: const TelaLogin(),
+      //home: const TelaLogin(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const TelaLogin(),
+        '/cadastro': (context) => const TelaCadastro(),
+        '/dados': (context) => const TelaDados(),
+        '/ajuda': (context) => const TelaAjuda(),
+        '/home': (context) => const MyHomePage(title: 'Projeto Flutter'),
+      },
     );
   }
 }

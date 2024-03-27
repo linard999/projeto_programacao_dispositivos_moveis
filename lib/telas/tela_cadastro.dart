@@ -23,7 +23,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        title: const Text('Cadastro'),
+        title: Text('Cadastro', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
       ),
       body: Center(
         child: Padding(
@@ -123,6 +123,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: widget.labelText,
         suffixIcon: widget.isObscure ? IconButton(
           icon: Icon(_visibility ? Icons.visibility : Icons.visibility_off),
@@ -131,6 +132,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       obscureText: widget.isObscure && !_visibility,
       controller: widget.controller,
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
     );
   }
 }
