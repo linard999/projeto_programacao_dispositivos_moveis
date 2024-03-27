@@ -38,7 +38,9 @@ dependencies:
   provider: ^6.1.2
   http: ^1.2.1
   prog_disp_moveis_tjrs:
-    path: ./package/prog_disp_moveis_tjrs
+    git:
+      url: https://github.com/RenatoPorfirio/prog_disp_moveis_tjrs.git
+      ref: master
 
 dev_dependencies:
   flutter_test:
