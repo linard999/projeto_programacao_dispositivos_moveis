@@ -166,9 +166,11 @@ packages:
   prog_disp_moveis_tjrs:
     dependency: "direct main"
     description:
-      path: "package/prog_disp_moveis_tjrs"
-      relative: true
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: "07c3e3eb7d07b5b96ed0f7702fab999fa9dbeb5c"
+      url: "https://github.com/RenatoPorfirio/prog_disp_moveis_tjrs.git"
+    source: git
     version: "0.0.1"
   provider:
     dependency: "direct main"
